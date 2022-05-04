@@ -1,8 +1,8 @@
-import React from 'react';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
 import dayjs from 'dayjs';
+import { Skeleton } from '@mui/material';
 
 interface fakeDBInterface {
   id: number;
@@ -12,7 +12,6 @@ interface fakeDBInterface {
 }
 
 interface fakeDBInterfaceArray extends Array<fakeDBInterface> {}
-
 let date = dayjs();
 
 const fakeDB: fakeDBInterfaceArray = [
@@ -116,10 +115,17 @@ function Card(): JSX.Element {
                 display: 'block',
                 fontSize: 12,
                 marginTop: 1,
+                marginBottom: 1,
               }}
             >
-              {`${date.get('year')}년 ${date.get('month')}월 ${date.get('day')}일`}
+              {`${date.get('year')}년 ${date.get('month') + 1}월 ${date.get('day') + 1}일`}
             </Box>
+
+            <Skeleton variant={'text'} />
+            <Skeleton variant={'text'} sx={{ marginBottom: 1 }} />
+            <Skeleton variant={'circular'} width={40} height={40} sx={{ marginBottom: 1 }} />
+            <Skeleton variant={'rectangular'} height={118} sx={{ marginBottom: 1 }} />
+            <Skeleton variant={'text'} />
           </StyledBox>
         );
       })}
